@@ -377,46 +377,46 @@
                     <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 20px;">'부동산 가격결정요인 실증분석' 보고서에서 도출한 다중회귀분석 수식을 백그라운드에 적용한 모델입니다.</p>
                     
                     <div class="sim-group">
-                        <div class="sim-label"><span>전용면적</span> <span id="v1">84 ㎡</span></div>
-                        <input type="range" id="r1" min="40" max="150" value="84" oninput="upd()">
+                        <div class="sim-label"><span>전용면적</span> <span id="v1_2">84 ㎡</span></div>
+                        <input type="range" id="r1_2" min="40" max="150" value="84" oninput="upd2()">
                     </div>
                     <div class="sim-group">
-                        <div class="sim-label"><span>건축 연수 (노후도)</span> <span id="v2">10 년</span></div>
-                        <input type="range" id="r2" min="0" max="30" value="10" oninput="upd()">
+                        <div class="sim-label"><span>건축 연수 (노후도)</span> <span id="v2_2">10 년</span></div>
+                        <input type="range" id="r2_2" min="0" max="30" value="10" oninput="upd2()">
                     </div>
                     <div class="sim-group">
-                        <div class="sim-label"><span>초등학교 거리</span> <span id="v3">300 m</span></div>
-                        <input type="range" id="r3" min="100" max="1000" value="300" oninput="upd()">
+                        <div class="sim-label"><span>초등학교 거리</span> <span id="v3_2">300 m</span></div>
+                        <input type="range" id="r3_2" min="100" max="1000" value="300" oninput="upd2()">
                     </div>
                 </div>
                 <div class="sim-result">
                     <div class="sim-result-title">AI 예상 거래 가치</div>
-                    <div class="sim-result-value" id="res">9억 5,000만 원</div>
+                    <div class="sim-result-value" id="res_2">9억 5,000만 원</div>
                 </div>
             </div>
         </div>
     </div>
     
     <script>
-        function upd() {
-            let a = parseInt(document.getElementById('r1').value);
-            let b = parseInt(document.getElementById('r2').value);
-            let c = parseInt(document.getElementById('r3').value);
+        function upd2() {
+            let a = parseInt(document.getElementById('r1_2').value);
+            let b = parseInt(document.getElementById('r2_2').value);
+            let c = parseInt(document.getElementById('r3_2').value);
             
-            document.getElementById('v1').innerText = a + " ㎡";
-            document.getElementById('v2').innerText = b + " 년";
-            document.getElementById('v3').innerText = c + " m";
+            document.getElementById('v1_2').innerText = a + " ㎡";
+            document.getElementById('v2_2').innerText = b + " 년";
+            document.getElementById('v3_2').innerText = c + " m";
             
             let val = 40000 + (a * 450) - (b * 800) - (c * 15);
             let e = Math.floor(val/10000);
             let m = val%10000;
-            document.getElementById('res').innerText = e + "억 " + (m>0 ? m.toLocaleString() + "만 " : "") + "원";
+            document.getElementById('res_2').innerText = e + "억 " + (m>0 ? m.toLocaleString() + "만 " : "") + "원";
         }
         
         function openModal(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
-            upd(); 
+            if(id === 'simModal') upd2(); 
         }
         function closeModal(id) {
             document.getElementById(id).classList.remove('active');
